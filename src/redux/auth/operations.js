@@ -24,10 +24,10 @@ export const register = createAsyncThunk(
     try {
       const res = await axios.post('/users/signup', credentials);
       setAuthHeader(res.data.token);
-      toast.success('Successful!', { position: 'top-right' });
+      toast.success('Successful!', { position: 'bottom-right' });
       return res.data;
     } catch (error) {
-      toast.error('Try another email', { position: 'top-right' });
+      toast.error('Try another email', { position: 'bottom-right' });
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -41,7 +41,7 @@ export const logIn = createAsyncThunk(
       setAuthHeader(res.data.token);
       return res.data;
     } catch (error) {
-      toast.error('Incorrect email or password', { position: 'top-right' });
+      toast.error('Incorrect email or password', { position: 'bottom-right' });
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -58,7 +58,7 @@ export const logOut = createAsyncThunk(
       });
       clearAuthHeader();
     } catch (error) {
-      toast.error('An error occurred!', { position: 'top-right' });
+      toast.error('An error occurred!', { position: 'bottom-right' });
       return thunkAPI.rejectWithValue(error.message);
     }
   }

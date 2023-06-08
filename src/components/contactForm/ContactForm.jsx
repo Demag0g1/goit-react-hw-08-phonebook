@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getContacts } from 'redux/contacts/selectors';
 import { nanoid } from 'nanoid';
 import { addContact } from 'redux/contacts/operations';
+import toast from 'react-hot-toast';
 
 export const ContactForm = () => {
   const dispatch = useDispatch();
@@ -22,7 +23,7 @@ export const ContactForm = () => {
     );
 
     if (addList) {
-      return alert(`${contact.name} is already in contacts!`);
+      return toast.error (`${contact.name} is already in contacts!`, { position: 'bottom-right' });
     }
     dispatch(addContact(contact));
     evt.currentTarget.reset();
