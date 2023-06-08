@@ -1,19 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { logOut } from 'redux/auth/operations';
 import { fetchContacts, addContact, deleteContact } from "./operations";
 
 
 const handlePending = state => {
-  return {
-    ...state,
-    isLoading: true,
-  };
+  state.isLoading = true;
 };
 const handleRejected = (state, action) => {
-  return {
-    ...state,
-    isLoading: false,
-    error: action.payload,
-  };
+  state.isLoading = false;
+  state.error = action.payload;
 };
 
 const handleAddContactSuccess = (state, action) => {
@@ -36,6 +31,11 @@ const handleDelContactSuccess = (state, action) => {
     items: state.items.filter(item => item.id !== action.payload.id),
   };
 };
+const handleFulfilledLogOut = state => {
+  state.items = [];
+  state.error = null;
+  state.isLoading = false;
+};
 
 const contactsSlice = createSlice({
   name: 'contacts',
@@ -54,6 +54,7 @@ const contactsSlice = createSlice({
     [fetchContacts.fulfilled]:handleFetchContactsSuccess,
     [addContact.fulfilled]:handleAddContactSuccess,
     [deleteContact.fulfilled]:handleDelContactSuccess,
+    [logOut.fulfilled]: handleFulfilledLogOut,
     
   },
 });

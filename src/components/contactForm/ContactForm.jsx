@@ -1,6 +1,6 @@
 import css from './ContactForm.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { getContacts,  } from 'redux/contacts/selectors';
+import { getContacts } from 'redux/contacts/selectors';
 import { nanoid } from 'nanoid';
 import { addContact } from 'redux/contacts/operations';
 
@@ -29,38 +29,45 @@ export const ContactForm = () => {
   };
 
   return (
-    <form className={css.form} onSubmit={handleSubmit}>
-      <label htmlFor={nanoid()}>
-        Name
+    <>
+      <form className={css.form} onSubmit={handleSubmit}>
+        <label htmlFor={nanoid()}>
+          Name
+          <br />
+          <input
+            className={css.input}
+            type="text"
+            pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+            name="name"
+            placeholder="John Dow"
+            id={nanoid()}
+            minLength={3}
+            required
+          />
+        </label>
         <br />
-        <input
-          className={css.input}
-          type="text"
-          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-          name="name"
-          placeholder="John Dow"
-          id={nanoid()}
-          required
-        />
-      </label>
-      <br />
-      <label htmlFor={nanoid()}>
-        Phone number
+        <label htmlFor={nanoid()}>
+          Phone number
+          <br />
+          <input
+            className={css.input}
+            type="tel"
+            name="number"
+            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+            placeholder="123-456-7890"
+            id={nanoid()}
+            minLength={10}
+            maxLength={10}
+            required
+          />
+        </label>
         <br />
-        <input
-          className={css.input}
-          type="tel"
-          name="number"
-          pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-          placeholder="123-456-7890"
-          id={nanoid()}
-          required
-        />
-      </label>
-      <br />
-      <button className={css.button} type="submit">
-        Add contact
-      </button>
-    </form>
+        <button className={css.button} type="submit">
+          Add contact
+        </button>
+      </form>
+    </>
   );
 };
+
+export default ContactForm;

@@ -5,6 +5,7 @@ import { getIsLoading } from 'redux/contacts/selectors';
 import { fetchContacts } from 'redux/contacts/operations';
 import { ContactList } from 'components/contactList/ContactList';
 import { Filter } from 'components/filter/Filter';
+import { ContactForm } from 'components/contactForm/ContactForm';
 
 export default function Tasks() {
   const dispatch = useDispatch();
@@ -17,10 +18,11 @@ export default function Tasks() {
   return (
     <>
       <Helmet>
-        <title>Your phonebook</title>
+        <title>Your contacts</title>
       </Helmet>
-      <Filter />
+      <ContactForm />
       <div>{isLoading && 'Request in progress...'}</div>
+      <Filter />
       <ContactList />
   </>
   );

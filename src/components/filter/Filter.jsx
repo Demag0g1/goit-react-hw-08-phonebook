@@ -1,7 +1,7 @@
 import css from './Filter.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { getFilter } from 'redux/contacts/selectors';
-import { setFilter } from 'redux/contacts/filterSlice';
+import { setFilter } from 'redux/filter/filterSlice';
 
 export const Filter = () => {
   const dispatch = useDispatch();
@@ -17,7 +17,9 @@ export const Filter = () => {
         value={filter}
         type="text"
         name="filter"
+        placeholder="Start find by name..."
       />
     </label>
   );
 };
+export default Filter;
