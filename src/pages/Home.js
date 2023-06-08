@@ -15,9 +15,11 @@ const styles = {
   export default function Home() {
     return (
       <div style={styles.container}>
-        <h1 style={styles.title}>
-          Phonebook welcome page{' '}
-        </h1>
+        <h2 style={styles.title}>
+        Hello!
+        <br />
+To enable further work, please register or login {' '}
+        </h2>
       </div>
     );
   }
