@@ -9,9 +9,8 @@ export const Filter = () => {
 
   return (
     <label>
-      Find contacts by name
-      <br />
-      <input
+     <h3>Find contacts by name</h3> 
+        <input
         className={css.input}
         onChange={evt => dispatch(setFilter(evt.target.value.trim()))}
         value={filter}

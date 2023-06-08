@@ -26,7 +26,7 @@ export const RegisterForm = () => {
       </label>
       <label className={css.label}>
         Email
-        <input type="email" name="email" />
+        <input type="email" name="email" title="Example of valid email address: qwerty1@example.com" />
       </label>
       <label className={css.label}>
         Password

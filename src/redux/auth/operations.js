@@ -2,14 +2,20 @@ import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import toast from 'react-hot-toast';
 
+const LOG_IN = 'checkLogIn';
+
+// axios.defaults.baseURL = 'https://6475a363e607ba4797dc38d4.mockapi.io/contacts/signup';
+
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com/';
 
 const setAuthHeader = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+  window.localStorage.setItem(LOG_IN, 'true');
 };
 
 const clearAuthHeader = () => {
   axios.defaults.headers.common.Authorization = '';
+  window.localStorage.setItem(LOG_IN, 'false');
 };
 
 export const register = createAsyncThunk(

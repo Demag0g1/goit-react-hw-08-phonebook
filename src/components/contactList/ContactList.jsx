@@ -29,11 +29,11 @@ export const ContactList = () => {
     <ul className={css.list}>
       {contactsFiltered.map(({ id, avatar, name, number }) => (
         <div className={css.item} key={id}>
-          <img
+          {/* <img
             style={{ width: '2rem', borderRadius: '50%' }}
             src={avatar}
             alt={name}
-          />
+          /> */}
           <span>{name}:</span>
           <span className={css.number}>{number}</span>
           <button

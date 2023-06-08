@@ -4,11 +4,11 @@
   
   .item {
     display: flex;
-    gap: 20px;
-    font-size: 24px;
+    gap: 15px;
+    font-size: 22px;
     width: 600px;
     justify-content: space-around;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
   }
   
   .number {
@@ -18,12 +18,14 @@
   .button {
     justify-content: flex-end;
     background-color: rgb(234, 217, 217);
-    border: 1px solid rgb(100, 97, 97);
-    border-radius: 5px;
+    border: 1px solid rgb(92, 90, 90);
+    border-radius: 12px;
     padding: 1px 10px;
-    font-size: 16px;
+    font-size: 15px;
+    font-style:oblique;
   }
   
   .button:hover {
-    background: rgb(231, 125, 125);
+    background: rgb(226, 99, 99);
+    color: antiquewhite;
   }

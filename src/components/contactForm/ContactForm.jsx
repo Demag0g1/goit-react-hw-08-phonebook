@@ -37,7 +37,8 @@ export const ContactForm = () => {
           <input
             className={css.input}
             type="text"
-            pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+            pattern="([A-Za-z]+[\-\s]?){7,25}"
+            title="Enter your first and last name" 
             name="name"
             placeholder="John Dow"
             id={nanoid()}
@@ -56,8 +57,8 @@ export const ContactForm = () => {
             pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
             placeholder="123-456-7890"
             id={nanoid()}
-            minLength={10}
-            maxLength={10}
+            minLength={12}
+            maxLength={12}
             required
           />
         </label>
