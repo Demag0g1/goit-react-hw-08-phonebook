@@ -6,6 +6,9 @@ import { PrivateRoute } from './PrivateRoute';
 import { RestrictedRoute } from './RestrictedRoute';
 import { refreshUser } from 'redux/auth/operations';
 import { useAuth } from 'hooks';
+import { ChakraProvider, Flex } from '@chakra-ui/react';
+import theme from './chakra-theme'
+import { Container } from '@chakra-ui/react'
 
 const HomePage = lazy(() => import('../pages/Home'));
 const RegisterPage = lazy(() => import('../pages/Register'));
@@ -24,6 +27,9 @@ export const App = () => {
   return isRefreshing ? (
     <b>Refreshing user...</b>
   ) : (
+    <ChakraProvider theme={theme}>
+      <Container maxW='container.sm'>
+      <Flex align="center" justify="center">
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<HomePage />} />
@@ -46,5 +52,8 @@ export const App = () => {
         <Route path="*" element={<Navigate to="/" />} />
       </Route>
     </Routes>
+    </Flex>
+    </Container>
+    </ChakraProvider>
   );
 };

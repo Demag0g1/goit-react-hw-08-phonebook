@@ -1,6 +1,6 @@
 const styles = {
     container: {
-      minHeight: 'calc(100vh - 50px)',
+      minHeight: 'calc(100vh - 500px)',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
@@ -18,7 +18,7 @@ const styles = {
         <h2 style={styles.title}>
         Hello!
         <br />
-To enable further work, please register or login {' '}
+Please, register or login {' '}
         </h2>
       </div>
     );
