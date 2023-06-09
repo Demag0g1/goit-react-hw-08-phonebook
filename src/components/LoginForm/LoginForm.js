@@ -1,12 +1,11 @@
 import { useDispatch } from 'react-redux';
 import { logIn } from 'redux/auth/operations';
-import css from './LoginForm.module.css';
-import { Button } from '@chakra-ui/react';
+import { Button, Input, FormControl, FormLabel, Stack } from '@chakra-ui/react';
 
 export const LoginForm = () => {
   const dispatch = useDispatch();
 
-  const handleSubmit = evt => {
+  const handleSubmit = (evt) => {
     evt.preventDefault();
     const form = evt.currentTarget;
     dispatch(
@@ -19,20 +18,49 @@ export const LoginForm = () => {
   };
 
   return (
-    <form className={css.form} onSubmit={handleSubmit} autoComplete="off">
-      <label className={css.label}>
-        Email
-        <input type="email" name="email" autoComplete="email" />
-      </label>
-      <label className={css.label}>
-        Password
-        <input
-          type="password"
-          name="password"
-          autoComplete="current-password"
-        />
-      </label>
-      <Button as='button' colorScheme='messenger' size='md' borderRadius='lg' type="submit" mx="auto" my={10}>Log In  </Button>
+    <form onSubmit={handleSubmit}>
+      <Stack spacing={1}>
+        <FormControl>
+          <FormLabel>
+            Email
+            <Input
+              type="email"
+              name="email"
+              autoComplete="email"
+              placeholder="email"
+              variant="filled"
+              focusBorderColor="blue.400"
+              mt={2}
+              mb={5}
+            />
+          </FormLabel>
+        </FormControl>
+        <FormControl>
+          <FormLabel>
+            Password
+            <Input
+              type="password"
+              name="password"
+              autoComplete="current-password"
+              placeholder="enter password"
+              variant="filled"
+              focusBorderColor="blue.400"
+              mt={2}
+              mb={5}
+            />
+          </FormLabel>
+        </FormControl>
+        <Button
+          colorScheme="messenger"
+          size="md"
+          borderRadius="lg"
+          variant="solid"
+          type="submit"
+          my={5}
+        >
+          Log In
+        </Button>
+      </Stack>
     </form>
   );
 };
