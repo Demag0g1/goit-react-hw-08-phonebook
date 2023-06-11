@@ -7,15 +7,19 @@ export const Navigation = () => {
   const { isLoggedIn } = useAuth();
 
   return (
-    <Container mt={5} display="flex" justifyItems="self-end">
-      <Box direction="column">
-        <nav>
-          <Text as="b" fontSize="24px" fontWeight="600" letterSpacing="wide">
+    <Container mt={5}>
+      <nav>
+        <Text as="b" fontSize="24px" fontWeight="600" letterSpacing="wide">
+          <Box mr={10}>
             <NavLink to="/">Home</NavLink>
-            {isLoggedIn && <NavLink to="/contacts">Contacts</NavLink>}
-          </Text>
-        </nav>
-      </Box>
+          </Box>
+          {isLoggedIn && (
+            <Box>
+              <NavLink to="/contacts">Contacts</NavLink>
+            </Box>
+          )}
+        </Text>
+      </nav>
     </Container>
   );
 };

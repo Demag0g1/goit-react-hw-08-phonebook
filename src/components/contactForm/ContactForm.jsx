@@ -31,7 +31,11 @@ export const ContactForm = () => {
 
     if (addList) {
       return toast.error(`${contact.name} is already in contacts!`, {
-        position: 'bottom-right',
+        position: 'top-right',
+        style: {
+          background: '#E9685C',
+          color: 'white',
+        },
       });
     }
     dispatch(addContact(contact));
@@ -41,7 +45,7 @@ export const ContactForm = () => {
   return (
     <form onSubmit={handleSubmit}>
       <Box maxW="sm">
-        <Stack spacing={0.2}>
+        <Stack spacing={3}>
           <FormControl>
             <FormLabel htmlFor={nanoid()}>Name</FormLabel>
             <Input

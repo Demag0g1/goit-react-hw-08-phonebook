@@ -11,7 +11,7 @@ export default function Home() {
       <Text as="b" fontSize="4xl" textAlign="center">
         Hello!
         <br />
-        Please, register or login{' '}
+        Welcome to you Phonebook{' '}
       </Text>
     </Box>
   );

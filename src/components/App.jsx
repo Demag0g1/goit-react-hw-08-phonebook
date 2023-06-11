@@ -6,7 +6,7 @@ import { PrivateRoute } from './PrivateRoute';
 import { RestrictedRoute } from './RestrictedRoute';
 import { refreshUser } from 'redux/auth/operations';
 import { useAuth } from 'hooks';
-import { Box, Center, ChakraProvider } from '@chakra-ui/react';
+import { Box, Button, Center, ChakraProvider } from '@chakra-ui/react';
 import theme from './chakra-theme';
 
 const HomePage = lazy(() => import('../pages/Home'));
@@ -24,7 +24,19 @@ export const App = () => {
   }, [dispatch]);
 
   return isRefreshing ? (
-    <b>Refreshing user...</b>
+    <Button
+      isLoading
+      ml="18%"
+      mt="18%"
+      px={15}
+      h={80}
+      loadingText="Refreshing user.."
+      colorScheme="blue"
+      variant="outline"
+      fontSize={24}
+    >
+      Submit
+    </Button>
   ) : (
     <ChakraProvider theme={theme}>
       <Box position="relative" m="auto">
