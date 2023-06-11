@@ -8,20 +8,18 @@ export const Layout = () => {
   return (
     <Box
       maxW="3xl"
-      borderWidth="3px"
-      display="flex"
-      mt="2"
-      alignItems="center"
-      borderRadius="lg"
+      borderWidth="4px"
+      mt="5%"
+      borderRadius="xl"
       overflow="hidden"
     >
-      <div style={{ maxWidth: 768, margin: '0 auto', padding: '0 16px' }}>
+      <Box margin="0 auto" padding="0 16px">
         <AppBar />
         <Suspense fallback={null}>
           <Outlet />
         </Suspense>
         <Toaster position="top-right" reverseOrder={false} />
-      </div>
+      </Box>
     </Box>
   );
 };

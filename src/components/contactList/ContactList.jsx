@@ -1,7 +1,7 @@
-import css from './ContactList.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteContact } from 'redux/contacts/operations';
 import { getContacts, getFilter } from 'redux/contacts/selectors';
+import { Box, Text, Button, UnorderedList } from '@chakra-ui/react';
 
 export const ContactList = () => {
   const contacts = useSelector(getContacts);
@@ -17,35 +17,51 @@ export const ContactList = () => {
   };
   if (!contactsFiltered?.length) {
     return (
-      <div>
+      <Box>
         {' '}
         <br />
         No contacts found ¯\_(ツ)_/¯{' '}
-      </div>
+      </Box>
     );
   }
 
   return (
-    <ul className={css.list}>
+    <UnorderedList>
       {contactsFiltered.map(({ id, avatar, name, number }) => (
-        <div className={css.item} key={id}>
+        <div key={id}>
           {/* <img
             style={{ width: '2rem', borderRadius: '50%' }}
             src={avatar}
-            alt={name}
+            alt={name} 
           /> */}
-          <span>{name}:</span>
-          <span className={css.number}>{number}</span>
-          <button
-            className={css.button}
-            type="button"
-            onClick={() => onDelContact(id)}
+          <Box
+            maxW="lg"
+            display="flex"
+            alignItems="center"
+            justifyContent="space-between"
           >
-            Delete
-          </button>
+            <Text fontSize="22px" as="b">
+              <span>{name}:</span>
+            </Text>
+            <Text fontSize="22px" as="b">
+              <span>{number}</span>
+            </Text>
+            <Button
+              onClick={() => onDelContact(id)}
+              colorScheme="red"
+              size="sm"
+              borderRadius="xl"
+              variant="solid"
+              type="button"
+              my={2}
+              p={3}
+            >
+              Delete
+            </Button>
+          </Box>
         </div>
       ))}
-    </ul>
+    </UnorderedList>
   );
 };
 export default ContactList;

@@ -6,7 +6,7 @@ import { Button, Input, FormControl, FormLabel, Stack } from '@chakra-ui/react';
 export const RegisterForm = () => {
   const dispatch = useDispatch();
 
-  const handleSubmit = (evt) => {
+  const handleSubmit = evt => {
     evt.preventDefault();
     const form = evt.currentTarget;
     dispatch(
