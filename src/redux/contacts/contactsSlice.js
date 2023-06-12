@@ -42,6 +42,7 @@ const contactsSlice = createSlice({
     items: [],
     isLoading: false,
     error: null,
+    filter: '',
   },
  
   extraReducers: builder => {

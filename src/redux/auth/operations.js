@@ -4,8 +4,6 @@ import toast from 'react-hot-toast';
 
 const LOG_IN = 'checkLogIn';
 
-// axios.defaults.baseURL = 'https://6475a363e607ba4797dc38d4.mockapi.io/contacts/signup';
-
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com/';
 
 const setAuthHeader = token => {
@@ -24,10 +22,10 @@ export const register = createAsyncThunk(
     try {
       const res = await axios.post('/users/signup', credentials);
       setAuthHeader(res.data.token);
-      toast.success('Successful!', { position: 'bottom-right' });
+      toast.success('Successful!', { position: 'top-right' });
       return res.data;
     } catch (error) {
-      toast.error('Try another email', { position: 'bottom-right' });
+      toast.error('Try another email', { position: 'top-right' });
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -41,7 +39,7 @@ export const logIn = createAsyncThunk(
       setAuthHeader(res.data.token);
       return res.data;
     } catch (error) {
-      toast.error('Incorrect email or password', { position: 'bottom-right' });
+      toast.error('Incorrect email or password', { position: 'top-right' });
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -49,16 +47,16 @@ export const logIn = createAsyncThunk(
 
 export const logOut = createAsyncThunk(
   'auth/logout',
-  async (user, thunkAPI) => {
+  async (_, thunkAPI) => {
     try {
-      await axios.post('/users/logout', user);
+      await axios.post('/users/logout');
       toast('Good bye!', {
         icon: '🖐',
         position: 'top-right',
       });
       clearAuthHeader();
     } catch (error) {
-      toast.error('An error occurred!', { position: 'bottom-right' });
+      toast.error('An error occurred!', { position: 'top-right' });
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -73,7 +71,7 @@ export const refreshUser = createAsyncThunk(
     if (persistedToken === null) {
       return thunkAPI.rejectWithValue('Unable to fetch user');
     }
-    try {
+     try {
       setAuthHeader(persistedToken);
       const res = await axios.get('/users/current');
       return res.data;

@@ -6,6 +6,7 @@ import { fetchContacts } from 'redux/contacts/operations';
 import { ContactList } from 'components/contactList/ContactList';
 import { Filter } from 'components/filter/Filter';
 import { ContactForm } from 'components/contactForm/ContactForm';
+import { CircularProgress } from '@chakra-ui/react'
 
 export default function Tasks() {
   const dispatch = useDispatch();
@@ -21,7 +22,7 @@ export default function Tasks() {
         <title>Your contacts</title>
       </Helmet>
       <ContactForm />
-      <div>{isLoading && 'Request in progress...'}</div>
+      <div>{isLoading && <CircularProgress isIndeterminate color='green.300' />}</div>
       <Filter />
       <ContactList />
   </>
